@@ -12,6 +12,7 @@
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
+    "google-vision-api-client": "0.0.3",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "mongoose": "^5.2.4",
