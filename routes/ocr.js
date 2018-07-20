@@ -11,6 +11,11 @@ let Logger = require('../func/color').Logger;
 let path = require('path');
 
 function ocr(app) {
+    app.get('/',(req,res)=>{
+        "use strict";
+        res.render("index.html");
+    });
+    
     app.post('/ocr/upload',upload.single('ocr'),(req,res)=>{
         "use strict";
         let file_path = req.file.path;
