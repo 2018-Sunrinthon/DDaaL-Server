@@ -18,8 +18,9 @@ let user = new mongoose.Schema({
     token : { type : String },
     user_data:{
         name : { type : String },
-        age : { type : String },
-        admin : { type : Boolean }
+        age : { type : Number },
+        admin : { type : Boolean },
+        profile_image_url: { type : String }
     },
     user_location:{
         user_latitude:{ type : String },
@@ -37,6 +38,44 @@ let user = new mongoose.Schema({
     }
 });
 
+let post = new mongoose.Schema({
+    post_token: { type : String },
+    author_data:{
+        author_name: { type : String },
+        author_id: { type : String },
+        author_token : { type : String },
+        author_admin : { type : Boolean },
+        author_call : { type : String },
+    },
+    post_data:{
+        post_title: { type : String },
+        post_content : { type : String },
+        post_hash_tag:[{
+            hash_tag : { type : String }
+        }],
+        post_profile_image_url: { type : String },
+        post_puff_comment:[{
+            comment_user_token : { type : String },
+            comment_user_name : { type : String },
+            comment_time : { type : String },
+            comment_text : { type : String },
+            comment_puff_amount : { type : Number }
+        }],
+    },
+    alba_data:{
+        alba_location:{
+            latitude: { type : Number },
+            longitude: { type : Number },
+            location: { type : String }
+        },
+        alba_time: { type : String },
+        alba_pay : { type : Number }
+    }
+
+});
+
+let postModel = mongoose.model('postModel',post);
 let userModel = mongoose.model('userModel',user);
 
 exports.User = userModel;
+exports.Post = postModel;
