@@ -231,7 +231,7 @@ function community(app) {
         let post_token = req.body.post_token;
         let comment_user_token = req.body.user_token;
         let comment_user_name = req.body.user_name;
-        let comment_time = req.body.time;
+        let comment_time = new Date();
         let comment_text = req.body.text;
         let comment_puff_amount = req.body.puff_amount;
 
