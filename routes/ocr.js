@@ -3,12 +3,12 @@
  */
 module.exports = ocr;
 
-let tesseract = require('node-tesseract');
 let async = require('async');
 let { User } = require('../DB/schema');
 let upload = require('../func/multer').upload;
 let Logger = require('../func/color').Logger;
 let path = require('path');
+let pythonShell = require('python-shell');
 
 function ocr(app) {
     app.get('/',(req,res)=>{
@@ -19,11 +19,21 @@ function ocr(app) {
     app.post('/ocr/upload',upload.single('ocr'),(req,res)=>{
         "use strict";
         let file_path = req.file.path;
-        tesseract.process(__dirname + file_path,function(err, text) {
-            if(err) throw err;
-            console.log(text);
+	let root_path = __dirname.replace("routes","")+file_path;
+	let options = { 
+  mode: 'text',
 
-            res.send(text);
-        });
+  		pythonPath: '',
+
+  		pythonOptions: ['-u'],
+
+		  scriptPath: '',
+
+		imgPath : root_path 
+	};
+	pythonShell.run('ocr.py',options,(err , results)=>{
+		if(err) throw err;
+		res.send(results);
+	});
     });
 }
