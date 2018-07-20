@@ -16,4 +16,18 @@
 
     커뮤니티 쿼리와 관련된 독스입니다
     
+[/data](./docs/data.md)
+
+    데이터어어어어어어 받아아라알아랑
+ 
+[/ocr](./docs/ocr.md)
+
+    앙 문자인식띠
+    
+[/setting](./docs/setting.md)
+
+    설-정
+    
+
+    
  
