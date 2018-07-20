@@ -21,15 +21,11 @@ function ocr(app) {
         let file_path = req.file.path;
 	let root_path = __dirname.replace("routes","")+file_path;
 	let options = { 
-  mode: 'text',
-
+        mode: 'text',
   		pythonPath: '',
-
   		pythonOptions: ['-u'],
-
-		  scriptPath: '',
-
-		imgPath : root_path 
+		scriptPath: '',
+		args : [root_path]
 	};
 	pythonShell.run('ocr.py',options,(err , results)=>{
 		if(err) throw err;
