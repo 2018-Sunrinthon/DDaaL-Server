@@ -59,7 +59,8 @@ let post = new mongoose.Schema({
             comment_user_name : { type : String },
             comment_time : { type : String },
             comment_text : { type : String },
-            comment_puff_amount : { type : Number }
+            comment_puff_amount : { type : Number },
+            comment_user_profile_image: { type : String },
         }],
     },
     alba_data:{

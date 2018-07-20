@@ -243,22 +243,22 @@ function community(app) {
                         cb(true , 401 , "Unauthorized Token");
                     }
                     else{
-                        cb(null);
+                        cb(null , model[0].user_data.profile_image_url);
                     }
                 });
             },
-            function (cb) {
+            function (profile ,cb) {
                 Post.find({post_token:post_token},(err,model)=>{
                     if(err) throw err;
                     if(model.length == 0){
                         cb(true, 404 , "Post Not Found");
                     }
                     else{
-                        cb(null , model[0]);
+                        cb(null , model[0] , profile);
                     }
                 });
             },
-            function (model , cb) {
+            function (model , profile , cb) {
                 let updateData = model.post_data.post_puff_comment;
                 let updateData_length = updateData.length;
 
@@ -267,7 +267,8 @@ function community(app) {
                     comment_user_name : comment_user_name,
                     comment_time : comment_time,
                     comment_text : comment_text,
-                    comment_puff_amount : comment_puff_amount
+                    comment_puff_amount : comment_puff_amount,
+                    comment_profile_image:profile
                 });
 
                 model.post_data.post_puff_comment = updateData;

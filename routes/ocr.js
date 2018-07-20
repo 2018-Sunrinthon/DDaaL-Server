@@ -11,7 +11,7 @@ let path = require('path');
 let vision = require('google-vision-api-client');
 let requtil = vision.requtil;
 
-let jsonFile = 'all-blue-9ee0e735bf3f.json';
+let jsonFile = __dirname+'/all-blue-9ee0e735bf3f.json';
 vision.init(jsonFile);
 
 function ocr(app) {
@@ -27,11 +27,11 @@ function ocr(app) {
 
         var data = requtil.createRequests().addRequest(
             requtil.createRequest(root_path)
+            .withFeature('TEXT_DETECTION', 3)
             .build());
-            
         vision.query(data,(err , response , body)=>{
             if(err) throw err;
-            res.send(JSON.stringify(body));
+            res.send(body.responses[0].fullTextAnnotation.text);
         });
     });
 }

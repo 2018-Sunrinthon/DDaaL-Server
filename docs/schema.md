@@ -201,6 +201,11 @@
     type : Number
     땜빵 비용을 의미합니다
 
+>>> comment_user_profile_image
+    
+    type : String
+    유저 프로필 사진을 의미합니다
+    
 > alba_data
 
     type : Object
