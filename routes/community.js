@@ -12,10 +12,10 @@ let upload = require('../func/multer').upload;
 
 
 function community(app) {
-    app.get('/',(req,res)=>{
-        "use strict";
-        res.render("index.html");
-    });
+    // app.get('/',(req,res)=>{
+    //     "use strict";
+    //     res.render("index.html");
+    // });
 
     app.get('/community/list/:page',(req,res)=>{
         "use strict";
@@ -90,7 +90,7 @@ function community(app) {
         let alba_time = req.body.alba_time;
         let alba_pay = req.body.alba_pay;
         let call = req.body.call;
-        let post_profile_image_url = "uploads/1532082292024.jpg";
+        let post_profile_image_url = req.file.path;
 
         async.waterfall([
             function (cb) {
